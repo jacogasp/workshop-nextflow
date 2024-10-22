@@ -4,7 +4,7 @@ Workshop Nextflow
 
 ## Running with Docker
 
-Use thi command if nextflow is not installed and you want to use the official
+Use this command if nextflow is not installed and you want to use the official
 docker image
 
 ```shell
@@ -37,5 +37,3 @@ nextflow run ws-nextflow --data "data/*.txt" --output results
 ```
 
 > **Important:** quotes in "data/*.txt" are mandatory.
-
-
