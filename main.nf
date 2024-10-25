@@ -11,7 +11,7 @@ output directory : ${params.output}
 """
 
 workflow {
-    def input = Channel.fromPath(params.data)
+    def input = Channel.fromPath(params.data + "/*.txt")
     def results = ComputePi(input).collectFile(name: "pi.txt", newLine: true)
     def pi = Avg(results)
     SaveResult(pi)

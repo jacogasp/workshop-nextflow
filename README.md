@@ -33,7 +33,6 @@ drwxr-xr-x@  8 user  user   256B 18 Oct 23:45 ws-nextflow
 ### Run the workflow
 
 ```shell
-nextflow run ws-nextflow --data "data/*.txt" --output results
+nextflow run ws-nextflow --data ./data --output results
 ```
 
-> **Important:** quotes in "data/*.txt" are mandatory.
