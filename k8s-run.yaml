@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wf-workshop-jacopo
+  namespace: nextflow
+spec:
+  serviceAccountName: nextflow-sa
+  restartPolicy: Never
+  volumes:
+    - name: input-vol
+      persistentVolumeClaim:
+        claimName: pvc-input
+    - name: output-vol
+      persistentVolumeClaim:
+        claimName: pvc-output
+    - name: work-vol
+      persistentVolumeClaim:
+        claimName: pvc-work
+  containers:
+    - name: nextflow
+      image: gitlab-sorsola-integration.cnaf.infn.it:4567/sorsola/docker-images/nextflow
+      imagePullPolicy: Always
+      args: [
+        "nextflow", "run", "jacogasp/workshop-nextflow",
+        "--namespace", "nextflow",
+        "-profile", "k8s",
+        "-w", "/work/nextflow/workshop-sorsola",
+        "--data", "/input/data/workshop",
+        "--output", "/output/results/workshop",
+        "-resume",
+        "-r", "main"
+      ]
+      volumeMounts:
+        - name: input-vol
+          mountPath: "/input/data"
+        - name: work-vol
+          mountPath: "/work/nextflow"
+        - name: output-vol
+          mountPath: "/output/results"
