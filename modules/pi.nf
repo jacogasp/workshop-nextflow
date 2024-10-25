@@ -51,6 +51,7 @@ process SaveResult {
   input:
     val pi
   publishDir params.output, mode: 'copy', overwrite: true
+  container "python:3"
   output:
     path "pi.txt"
   shell:
