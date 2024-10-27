@@ -20,6 +20,7 @@ spec:
     - name: nextflow
       image: gitlab-sorsola-integration.cnaf.infn.it:4567/sorsola/docker-images/nextflow
       imagePullPolicy: Always
+      workingDir: "/work/nextflow"
       args: [
         "nextflow", "run", "jacogasp/workshop-nextflow",
         "--namespace", "nextflow",
