@@ -22,14 +22,13 @@ spec:
       imagePullPolicy: Always
       workingDir: "/work/nextflow"
       args: [
-        "nextflow", "run", "jacogasp/workshop-nextflow",
-        "--namespace", "nextflow",
+        "nextflow", "run",
+        "jacogasp/workshop-nextflow", "-r", "main",
         "-profile", "k8s",
         "-w", "/work/nextflow/workshop-sorsola",
         "--data", "/input/data/workshop",
         "--output", "/output/results/workshop",
-        "-resume",
-        "-r", "main"
+        "-resume"
       ]
       volumeMounts:
         - name: input-vol
